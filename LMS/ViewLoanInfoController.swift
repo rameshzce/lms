@@ -54,7 +54,8 @@ class ViewLoanInfoController: UIViewController {
                         do {
                             try context.save()
                             
-                            print("Deleted: " + self.loanName!)
+                            //print("Deleted: " + self.loanName!)
+                            self.performSegue(withIdentifier: "deleteLoan", sender: nil)
                         } catch {
                             print("Error")
                         }
