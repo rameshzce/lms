@@ -227,11 +227,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vRE-TC-owq" id="7dj-MP-uQH">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xt-qE-Msc">
-                                            <rect key="frame" x="46.5" y="12" width="250" height="21"/>
+                                            <rect key="frame" x="46" y="12" width="250" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="250" id="1P9-v2-QXP"/>
                                                 <constraint firstAttribute="height" constant="21" id="CiK-Iq-3jB"/>
@@ -294,6 +294,9 @@
                                 <state key="normal" title="Delete loan">
                                     <color key="titleColor" red="0.97966819999999999" green="0.14907819559999999" blue="0.055934175240000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="deleteLoan:" destination="sYM-rh-MFy" eventType="touchUpInside" id="odO-WQ-PHL"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loan amount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sp3-sJ-K8Q">
                                 <rect key="frame" x="16" y="140" width="100" height="21"/>
@@ -405,7 +408,7 @@
                                 <color key="trackTintColor" red="0.85882352939999995" green="0.63921568630000003" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                             </progressView>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tGN-sY-ucc">
-                                <rect key="frame" x="163" y="521" width="52" height="30"/>
+                                <rect key="frame" x="163.5" y="521" width="52" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="RJ5-ms-jOM"/>
                                     <constraint firstAttribute="height" constant="30" id="l1u-Z4-ozh"/>
@@ -415,7 +418,7 @@
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disable reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAR-Kk-vdP">
-                                <rect key="frame" x="123" y="481" width="130" height="20"/>
+                                <rect key="frame" x="124" y="481" width="130" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="0j2-Qg-BkD"/>
                                     <constraint firstAttribute="width" constant="130" id="OcM-lp-5F5"/>

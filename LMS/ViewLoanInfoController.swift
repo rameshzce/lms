@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import  CoreData
+import CoreData
 import UserNotifications
 
 class ViewLoanInfoController: UIViewController {
@@ -25,6 +25,57 @@ class ViewLoanInfoController: UIViewController {
     
     @IBAction func updatePayment(_ sender: Any) {
         
+    }
+    
+    @IBAction func deleteLoan(_ sender: Any) {
+        let deleteAlert = UIAlertController(title: "LMS", message: "Are you sure to delete?", preferredStyle: .alert)
+        
+        deleteAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+            deleteAlert.dismiss(animated: true, completion: nil)
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Loans")
+            
+            request.predicate = NSPredicate(format: "name = %@", self.loanName!)
+            
+            request.returnsObjectsAsFaults = false
+            
+            do {
+                let results = try context.fetch(request)
+                
+                if results.count > 0 {
+                    for result in results as! [NSManagedObject] {
+                        
+                       context.delete(result)
+                        
+                        do {
+                            try context.save()
+                            
+                            print("Deleted: " + self.loanName!)
+                        } catch {
+                            print("Error")
+                        }
+
+                    }
+                } else {
+                    print("No data")
+                }
+            } catch {
+                print("Delete error")
+            }
+
+            
+        }))
+        
+        deleteAlert.addAction(UIAlertAction(title: "No", style: .default, handler: { (action) in
+            deleteAlert.dismiss(animated: true, completion: nil)
+            
+        }))
+        
+        self.present(deleteAlert, animated: true, completion: nil)
     }
     
     @IBAction func setReminder(_ sender: UISwitch) {

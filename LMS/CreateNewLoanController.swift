@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import  UserNotifications
+import UserNotifications
 
 class CreateNewLoanController: UIViewController {
     var lName: String = ""
