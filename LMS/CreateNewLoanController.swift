@@ -72,16 +72,16 @@ class CreateNewLoanController: UIViewController {
                 content.title = "EMI for the loan " + self.lName + " is due in 7 days."
                 content.body = "Please check your bank account to avoid charges"
                 content.sound = UNNotificationSound.default()
+                print(loanMonth.date)
                 
-                //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-                
-                let triggerTime = Calendar.current.dateComponents([.month, .day, .hour, .minute, .second], from: loanMonth.date)
-                
-                print(triggerTime)
+                let notificationDate = Calendar.current.date(byAdding: .day, value: -7, to: loanMonth.date)
+
+                let triggerTime = Calendar.current.dateComponents([.month, .day, .hour, .minute, .second], from: notificationDate!)
                 
                 let trigger = UNCalendarNotificationTrigger(dateMatching: triggerTime, repeats: true)
                 
-                let identifier = "Notification_"
+                let identifier = "Notification_" + self.lName.replacingOccurrences(of: " ", with: "_")
+                print(identifier)
                 
                 let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
                 
