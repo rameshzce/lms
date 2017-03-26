@@ -21,11 +21,7 @@ class ViewLoanInfoController: UIViewController {
     @IBOutlet var loanEndDate: UILabel!
     @IBOutlet var loanEmi: UILabel!
     @IBOutlet var reminderLabel: UILabel!
-    @IBOutlet var progressBar: UIProgressView!
-    
-    @IBAction func updatePayment(_ sender: Any) {
-        
-    }
+
     
     @IBAction func deleteLoan(_ sender: Any) {
         let deleteAlert = UIAlertController(title: "LMS", message: "Are you sure to delete?", preferredStyle: .alert)
@@ -79,27 +75,7 @@ class ViewLoanInfoController: UIViewController {
         self.present(deleteAlert, animated: true, completion: nil)
     }
     
-    @IBAction func setReminder(_ sender: UISwitch) {
-        if (sender.isOn == true){
-            reminderLabel.text = "Disable reminder"
-        } else {
-            reminderLabel.text = "Enable reminder"
-        }
-        
-        /*let content = UNMutableNotificationContent()
-        
-        content.title = "Loan emi is due in 3 days"
-        content.subtitle = "Loan for the month of march"
-        content.body = "Please check your bank account to avoid charges"
-        content.badge = 1
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
-        
-        let request = UNNotificationRequest(identifier: "Done", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)*/
-
-    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,7 +132,6 @@ class ViewLoanInfoController: UIViewController {
             print("Could not fetch data")
         }
         
-        progressBar.progress = 0.3
     }
     
     override func didReceiveMemoryWarning() {
