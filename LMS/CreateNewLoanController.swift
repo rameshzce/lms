@@ -24,6 +24,7 @@ class CreateNewLoanController: UIViewController {
     @IBOutlet var showMessage: UILabel!
     @IBOutlet var loanStartMonth: UITextField!
     @IBOutlet var loanEmi: UITextField!
+    @IBOutlet var createLoanBtn: UIButton!
     
     let loanMonth = UIDatePicker()
     
@@ -44,6 +45,14 @@ class CreateNewLoanController: UIViewController {
             self.lTenure = Int(loanTenure.text!)!
             self.lStartDate = loanStartMonth.text!
             self.lEmi = Int(loanEmi.text!)!
+            
+            let date = Calendar.current.date(byAdding: .month, value: Int(self.lTenure) - 1, to: loanMonth.date)
+            let formatDate = DateFormatter()
+            formatDate.dateStyle = .medium
+            formatDate.timeStyle = .none
+            
+            lEndDate = formatDate.string(from: date!)
+            print(lEndDate)
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             
@@ -106,6 +115,12 @@ class CreateNewLoanController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.createLoanBtn.layer.cornerRadius = 15
+        self.createLoanBtn.clipsToBounds = true
+        
+        self.createLoanBtn.layer.borderWidth = 2
+        self.createLoanBtn.layer.borderColor = UIColor.white.cgColor
+        
         createDatePickerMonth()
         
         // Do any additional setup after loading the view.
@@ -138,10 +153,6 @@ class CreateNewLoanController: UIViewController {
         formatDate.timeStyle = .none
         
         loanStartMonth.text = formatDate.string(from: loanMonth.date)
-        
-        let date = Calendar.current.date(byAdding: .month, value: Int(loanTenure.text!)! - 1, to: loanMonth.date)
-        
-        lEndDate = formatDate.string(from: date!)
         
         self.view.endEditing(true)
     }
