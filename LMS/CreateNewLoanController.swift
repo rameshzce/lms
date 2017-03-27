@@ -165,8 +165,12 @@ class CreateNewLoanController: UIViewController, UITextFieldDelegate {
         emiToolbar.sizeToFit()
         
         loanEmi.inputAccessoryView = emiToolbar
-        //loanTenure.inputAccessoryView = numberToolbar
-        //loanEmi.inputAccessoryView = numberToolbar
+
+        self.customizetextField(loanName)
+        self.customizetextField(loanAmount)
+        self.customizetextField(loanTenure)
+        self.customizetextField(loanEmi)
+        self.customizetextField(loanStartMonth)
         
         createDatePickerMonth()
         
@@ -237,7 +241,6 @@ class CreateNewLoanController: UIViewController, UITextFieldDelegate {
     
     func  textFieldShouldReturn(_ textField: UITextField) -> Bool {
         loanName.resignFirstResponder()
-        loanAmount.resignFirstResponder()
         return true
     }
     
@@ -248,6 +251,43 @@ class CreateNewLoanController: UIViewController, UITextFieldDelegate {
             UIAlertActionStyle.default, handler: nil))
         self.present(alertController, animated: true, completion:
             nil)
+    }
+    
+    func customizetextField(_ textField: UITextField!) {
+        textField.backgroundColor = UIColor(white: 1, alpha: 0.3)
+        textField.layer.cornerRadius = 3
+        textField.layer.borderWidth = 0
+        textField.layer.borderColor = UIColor.white.cgColor
+        
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
+        
+        textField.leftView = paddingView
+        
+        textField.leftViewMode = UITextFieldViewMode.always
+        
+        textField.tintColor = UIColor.white
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if (textField == loanEmi){
+            self.view.center.y = (self.view.center.y - 50)
+        }
+        
+        textField.placeholder = nil
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if (textField == loanEmi){
+            self.view.center.y = (self.view.center.y + 50)
+            loanEmi.placeholder = "Loan emi"
+        } else if (textField == loanName){
+            loanName.placeholder = "Loan name"
+        } else if (textField == loanAmount){
+            loanAmount.placeholder = "Loan amount"
+        } else if (textField == loanTenure){
+            loanTenure.placeholder = "Tenure in months"
+        }
+        
     }
     
     /*
