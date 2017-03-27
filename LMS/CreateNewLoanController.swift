@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import UserNotifications
 
-class CreateNewLoanController: UIViewController {
+class CreateNewLoanController: UIViewController, UITextFieldDelegate {
     var lName: String = ""
     var lAmount: Int = 0;
     var lTenure: Int = 0;
@@ -28,17 +28,21 @@ class CreateNewLoanController: UIViewController {
     
     let loanMonth = UIDatePicker()
     
+    let amountToolbar: UIToolbar = UIToolbar()
+    let tenureToolbar: UIToolbar = UIToolbar()
+    let emiToolbar: UIToolbar = UIToolbar()
+    
     @IBAction func createLoan(_ sender: Any) {
         if (loanName.text?.isEmpty)! {
-            showMessage.text = "Please enter a loan name"
+            showAlert("Please enter a loan name")
         } else if (loanAmount.text?.isEmpty)! {
-            showMessage.text = "Please enter a loan amount"
+            showAlert("Please enter a loan amount")
         } else if (loanTenure.text?.isEmpty)! {
-            showMessage.text = "Please enter a loan tenure"
-        } else if (loanStartMonth.text?.isEmpty)! {
-            showMessage.text = "Please select loan start date"
+            showAlert("Please enter a loan tenure")
         } else if (loanEmi.text?.isEmpty)! {
-            showMessage.text = "Please enter loan emi"
+            showAlert("Please enter loan emi")
+        } else if (loanStartMonth.text?.isEmpty)! {
+            showAlert("Please select loan start date")
         } else {
             self.lName = loanName.text!
             self.lAmount = Int(loanAmount.text!)!
@@ -71,7 +75,9 @@ class CreateNewLoanController: UIViewController {
             do {
                 try context.save()
                 
-                showMessage.text = self.lName + " has been saved"
+                //showMessage.text = self.lName + " has been saved"
+                
+                showAlert("Loan \'" + self.lName + "\' has been created")
                 
                 // set notification
                 
@@ -115,15 +121,83 @@ class CreateNewLoanController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.loanName.delegate = self
+        self.loanAmount.delegate = self
+        self.loanTenure.delegate = self
+        self.loanEmi.delegate = self
+        self.loanStartMonth.delegate = self
+        
         self.createLoanBtn.layer.cornerRadius = 15
         self.createLoanBtn.clipsToBounds = true
         
         self.createLoanBtn.layer.borderWidth = 2
         self.createLoanBtn.layer.borderColor = UIColor.white.cgColor
         
+        amountToolbar.barStyle = UIBarStyle.blackTranslucent
+        amountToolbar.items=[
+            UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.cancel)),
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil),
+            UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.done))
+        ]
+        
+        amountToolbar.sizeToFit()
+        
+        loanAmount.inputAccessoryView = amountToolbar
+        
+        tenureToolbar.barStyle = UIBarStyle.blackTranslucent
+        tenureToolbar.items=[
+            UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.cancel2)),
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil),
+            UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.done2))
+        ]
+        
+        tenureToolbar.sizeToFit()
+        
+        loanTenure.inputAccessoryView = tenureToolbar
+        
+        emiToolbar.barStyle = UIBarStyle.blackTranslucent
+        emiToolbar.items=[
+            UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.cancel3)),
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil),
+            UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.done3))
+        ]
+        
+        emiToolbar.sizeToFit()
+        
+        loanEmi.inputAccessoryView = emiToolbar
+        //loanTenure.inputAccessoryView = numberToolbar
+        //loanEmi.inputAccessoryView = numberToolbar
+        
         createDatePickerMonth()
         
         // Do any additional setup after loading the view.
+    }
+    
+    func done (_ textField: UITextField!) {
+        loanAmount.resignFirstResponder()
+    }
+    
+    func cancel (_ textField: UITextField!) {
+        loanAmount.text=""
+        loanAmount.resignFirstResponder()
+    }
+    
+    func done2 (_ textField: UITextField!) {
+        loanTenure.resignFirstResponder()
+    }
+    
+    func cancel2 (_ textField: UITextField!) {
+        loanTenure.text=""
+        loanTenure.resignFirstResponder()
+    }
+    
+    func done3 (_ textField: UITextField!) {
+        loanEmi.resignFirstResponder()
+    }
+    
+    func cancel3 (_ textField: UITextField!) {
+        loanEmi.text=""
+        loanEmi.resignFirstResponder()
     }
     
     override func didReceiveMemoryWarning() {
@@ -157,6 +231,24 @@ class CreateNewLoanController: UIViewController {
         self.view.endEditing(true)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func  textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        loanName.resignFirstResponder()
+        loanAmount.resignFirstResponder()
+        return true
+    }
+    
+    func showAlert(_ msg: String){
+        let alertController = UIAlertController(title: "LMS",
+                                                message: msg, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "OK", style:
+            UIAlertActionStyle.default, handler: nil))
+        self.present(alertController, animated: true, completion:
+            nil)
+    }
     
     /*
      // MARK: - Navigation

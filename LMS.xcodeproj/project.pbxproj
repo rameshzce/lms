@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		755554CF1E889CC300C2FADF /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755554CE1E889CC300C2FADF /* Helper.swift */; };
 		75CEA1E81E7F683A00FCFF7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CEA1E71E7F683A00FCFF7E /* AppDelegate.swift */; };
 		75CEA1EA1E7F683A00FCFF7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CEA1E91E7F683A00FCFF7E /* ViewController.swift */; };
 		75CEA1ED1E7F683A00FCFF7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75CEA1EB1E7F683A00FCFF7E /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		755554CE1E889CC300C2FADF /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Helper.swift; path = ../Helper.swift; sourceTree = "<group>"; };
 		75CEA1E41E7F683A00FCFF7E /* LMS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LMS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75CEA1E71E7F683A00FCFF7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75CEA1E91E7F683A00FCFF7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				75CEA1FC1E7F6AD300FCFF7E /* CreateNewLoanController.swift */,
 				75CEA1FE1E7F6B1D00FCFF7E /* ViewAllLoansController.swift */,
 				75CEA2001E7F6B7000FCFF7E /* ViewAllLoansCell.swift */,
+				755554CE1E889CC300C2FADF /* Helper.swift */,
 				75CEA2021E7F6BC000FCFF7E /* ViewLoanInfoController.swift */,
 			);
 			path = LMS;
@@ -159,6 +162,7 @@
 				75CEA2011E7F6B7000FCFF7E /* ViewAllLoansCell.swift in Sources */,
 				75CEA2031E7F6BC000FCFF7E /* ViewLoanInfoController.swift in Sources */,
 				75CEA1FF1E7F6B1D00FCFF7E /* ViewAllLoansController.swift in Sources */,
+				755554CF1E889CC300C2FADF /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
