@@ -9,8 +9,9 @@
 import UIKit
 import CoreData
 import UserNotifications
+import UICircularProgressRing
 
-class ViewLoanInfoController: UIViewController {
+class ViewLoanInfoController: UIViewController, UICircularProgressRingDelegate {
     
     var loanName: String?
     
@@ -20,7 +21,8 @@ class ViewLoanInfoController: UIViewController {
     @IBOutlet var loanStartDate: UILabel!
     @IBOutlet var loanEndDate: UILabel!
     @IBOutlet var loanEmi: UILabel!
-    @IBOutlet var reminderLabel: UILabel!
+    
+    @IBOutlet weak var ring2: UICircularProgressRingView!
 
     
     @IBAction func deleteLoan(_ sender: Any) {
@@ -132,6 +134,18 @@ class ViewLoanInfoController: UIViewController {
             print("Could not fetch data")
         }
         
+        ring2.fontColor = UIColor.white
+        
+        ring2.setProgress(value: 0, animationDuration: 2) { [unowned self] in
+            // Increase it more, and customize some properties
+            self.ring2.viewStyle = 4
+            self.ring2.setProgress(value: 50, animationDuration: 3) {
+                //self.ring2.font = UIFont.systemFont(ofSize: 50)
+            }
+        }
+        
+        // Set the delegate
+        ring2.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -139,7 +153,13 @@ class ViewLoanInfoController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    // The delegate method!
+    func finishedUpdatingProgress(forRing ring: UICircularProgressRingView) {
+        if ring === ring2 {
+            //print("From delegate: Ring 2 finished")
+        }
+    }
+
     /*
      // MARK: - Navigation
      
