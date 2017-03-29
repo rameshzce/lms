@@ -122,7 +122,7 @@ class ViewLoanInfoController: UIViewController, UICircularProgressRingDelegate {
                     if let loanStartDate = result.value(forKey: "startDate") as? String {
                         self.loanStartDate.text = "\(loanStartDate)"
                         let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "MMM dd, yyyy hh:mm"
+                        dateFormatter.dateFormat = "dd-MMM-yyyy hh:mm"
                         let date2 = dateFormatter.date(from: "\(loanStartDate) 11:59")
                         let date = Date()
                         let months = date.months(from: (date2)!)
