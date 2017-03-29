@@ -22,6 +22,9 @@ class ViewLoanInfoController: UIViewController, UICircularProgressRingDelegate {
     @IBOutlet var loanEndDate: UILabel!
     @IBOutlet var loanEmi: UILabel!
     
+    var loanCompletion = 0
+    var totalMonths = 0
+    
     @IBOutlet weak var ring2: UICircularProgressRingView!
 
     
@@ -111,16 +114,40 @@ class ViewLoanInfoController: UIViewController, UICircularProgressRingDelegate {
                         self.loanAmount.text = String("\(loanAmount)")
                     }
                     
-                    if let loanTenure = result.value(forKey: "tenure") as? Int {
-                        self.loanTenure.text = String("\(loanTenure)")
+                    if let loanTenure1 = result.value(forKey: "tenure") as? Int {
+                        self.loanTenure.text = String("\(loanTenure1)")
+                        self.totalMonths = loanTenure1
                     }
                     
                     if let loanStartDate = result.value(forKey: "startDate") as? String {
                         self.loanStartDate.text = "\(loanStartDate)"
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "MMM dd, yyyy hh:mm"
+                        let date2 = dateFormatter.date(from: "\(loanStartDate) 11:59")
+                        let date = Date()
+                        let months = date.months(from: date2!) + 1
+                        
+                        let m: Float = Float(months)
+                        let tm: Float = Float(self.totalMonths)
+                        var k: Float = 0.0
+                        k = Float (m/tm)
+                        var s: Float = 0
+                        if(m <= tm){
+                            s = k * 100
+                        }else{
+                            s = 100
+                        }
+                        
+
+                        self.loanCompletion = Int (s)
+                        
                     }
-                    
+                    print(self.loanCompletion)
                     if let loanEndDate = result.value(forKey: "endDate") as? String {
                         self.loanEndDate.text = "\(loanEndDate)"
+                        //self.loanCompletion = 60
+                        
+                        
                     }
                     
                     if let loanEmi = result.value(forKey: "emi") as? Int {
@@ -139,7 +166,7 @@ class ViewLoanInfoController: UIViewController, UICircularProgressRingDelegate {
         ring2.setProgress(value: 0, animationDuration: 2) { [unowned self] in
             // Increase it more, and customize some properties
             self.ring2.viewStyle = 4
-            self.ring2.setProgress(value: 50, animationDuration: 3) {
+            self.ring2.setProgress(value: CGFloat(self.loanCompletion), animationDuration: 3) {
                 //self.ring2.font = UIFont.systemFont(ofSize: 50)
             }
         }
@@ -159,6 +186,18 @@ class ViewLoanInfoController: UIViewController, UICircularProgressRingDelegate {
             //print("From delegate: Ring 2 finished")
         }
     }
+    
+    func getDate(_ dateString: String) -> Date {
+        let date = Date()
+        
+        return date
+    }
+    
+   // func getCompletion(_ totalMonths: Int, _ endDate: Date) -> Int {
+        
+        
+        
+    //}
 
     /*
      // MARK: - Navigation
@@ -171,3 +210,51 @@ class ViewLoanInfoController: UIViewController, UICircularProgressRingDelegate {
      */
     
 }
+
+extension Date {
+    /// Returns the amount of years from another date
+    func years(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.year], from: date, to: self).year ?? 0
+    }
+    /// Returns the amount of months from another date
+    func months(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.month], from: date, to: self).month ?? 0
+    }
+    /// Returns the amount of months from two dates
+    func months2(from dateFrom: Date, to dateTo: Date) -> Int {
+        return Calendar.current.dateComponents([.month], from: dateFrom, to: dateTo).month ?? 0
+    }
+    /// Returns the amount of weeks from another date
+    func weeks(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.weekOfYear], from: date, to: self).weekOfYear ?? 0
+    }
+    /// Returns the amount of days from another date
+    func days(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.day], from: date, to: self).day ?? 0
+    }
+    /// Returns the amount of hours from another date
+    func hours(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.hour], from: date, to: self).hour ?? 0
+    }
+    /// Returns the amount of minutes from another date
+    func minutes(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.minute], from: date, to: self).minute ?? 0
+    }
+    /// Returns the amount of seconds from another date
+    func seconds(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
+    }
+    /// Returns the a custom time interval description from another date
+    func offset(from date: Date) -> String {
+        if years(from: date)   > 0 { return "\(years(from: date))y"   }
+        if months(from: date)  > 0 { return "\(months(from: date))M"  }
+        if weeks(from: date)   > 0 { return "\(weeks(from: date))w"   }
+        if days(from: date)    > 0 { return "\(days(from: date))d"    }
+        if hours(from: date)   > 0 { return "\(hours(from: date))h"   }
+        if minutes(from: date) > 0 { return "\(minutes(from: date))m" }
+        if seconds(from: date) > 0 { return "\(seconds(from: date))s" }
+        return ""
+    }
+}
+
+
