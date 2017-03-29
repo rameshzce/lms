@@ -125,9 +125,9 @@ class ViewLoanInfoController: UIViewController, UICircularProgressRingDelegate {
                         dateFormatter.dateFormat = "MMM dd, yyyy hh:mm"
                         let date2 = dateFormatter.date(from: "\(loanStartDate) 11:59")
                         let date = Date()
-                        let months = date.months(from: date2!) + 1
+                        let months = date.months(from: (date2)!)
                         
-                        let m: Float = Float(months)
+                        let m: Float = Float(months + 1)
                         let tm: Float = Float(self.totalMonths)
                         var k: Float = 0.0
                         k = Float (m/tm)
@@ -218,7 +218,7 @@ extension Date {
     }
     /// Returns the amount of months from another date
     func months(from date: Date) -> Int {
-        return Calendar.current.dateComponents([.month], from: date, to: self).month ?? 0
+        return Calendar.current.dateComponents([.month], from: date, to: Date()).month ?? 0
     }
     /// Returns the amount of months from two dates
     func months2(from dateFrom: Date, to dateTo: Date) -> Int {
