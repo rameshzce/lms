@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import UserNotifications
+import SCLAlertView
 
 class CreateNewLoanController: UIViewController, UITextFieldDelegate {
     var lName: String = ""
@@ -33,16 +34,31 @@ class CreateNewLoanController: UIViewController, UITextFieldDelegate {
     let emiToolbar: UIToolbar = UIToolbar()
     
     @IBAction func createLoan(_ sender: Any) {
+        let alert = SCLAlertView()
+        
+        let icon = UIImage(named:"logo.png")
+        let color = UIColor.red
+        let color2 = UIColor.green
+        
+        //_ = alert.showCustom("LMS", subTitle: "Please enter a loan name", color: color, icon: icon!)
+        
+        
+        
         if (loanName.text?.isEmpty)! {
-            showAlert("Please enter a loan name")
+            //showAlert("Please enter a loan name")
+            _ = alert.showCustom("LMS", subTitle: "Please enter a loan name", color: color, icon: icon!)
         } else if (loanAmount.text?.isEmpty)! {
-            showAlert("Please enter a loan amount")
+            //showAlert("Please enter a loan amount")
+            _ = alert.showCustom("LMS", subTitle: "Please enter a loan amount", color: color, icon: icon!)
         } else if (loanTenure.text?.isEmpty)! {
-            showAlert("Please enter a loan tenure")
+            //showAlert("Please enter a loan tenure")
+            _ = alert.showCustom("LMS", subTitle: "Please enter a loan tenure", color: color, icon: icon!)
         } else if (loanEmi.text?.isEmpty)! {
-            showAlert("Please enter loan emi")
+            //showAlert("Please enter loan emi")
+            _ = alert.showCustom("LMS", subTitle: "Please enter loan emi", color: color, icon: icon!)
         } else if (loanStartMonth.text?.isEmpty)! {
-            showAlert("Please select loan start date")
+            //showAlert("Please select loan start date")
+            _ = alert.showCustom("LMS", subTitle: "Please select loan start date", color: color, icon: icon!)
         } else {
             self.lName = loanName.text!
             self.lAmount = Int(loanAmount.text!)!
@@ -77,7 +93,8 @@ class CreateNewLoanController: UIViewController, UITextFieldDelegate {
                 
                 //showMessage.text = self.lName + " has been saved"
                 
-                showAlert("Loan \'" + self.lName + "\' has been created")
+                //showAlert("Loan \'" + self.lName + "\' has been created")
+                _ = alert.showCustom("LMS", subTitle: "Loan \'" + self.lName + "\' has been created", color: color2, icon: icon!)
                 
                 // set notification
                 
