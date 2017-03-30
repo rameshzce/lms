@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 class Helper{
 
-    /*
+    
     static func customizetextField(_ textField: UITextField!) {
         textField.backgroundColor = UIColor.clear
         textField.layer.cornerRadius = 5
@@ -104,5 +105,5 @@ class Helper{
         
         // Run task
         task.resume()
-    }*/
+    }
 }

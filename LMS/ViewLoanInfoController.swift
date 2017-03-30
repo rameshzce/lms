@@ -122,8 +122,8 @@ class ViewLoanInfoController: UIViewController, UICircularProgressRingDelegate {
                     if let loanStartDate = result.value(forKey: "startDate") as? String {
                         self.loanStartDate.text = "\(loanStartDate)"
                         let dateFormatter = DateFormatter()
-                        //dateFormatter.dateFormat = "dd-MMM-yyyy hh:mm"
-                        dateFormatter.dateFormat = "MMM dd, yyyy hh:mm"
+                        dateFormatter.dateFormat = "dd-MMM-yyyy hh:mm"
+                        //dateFormatter.dateFormat = "MMM dd, yyyy hh:mm"
                         let date2 = dateFormatter.date(from: "\(loanStartDate) 00:00")
                         let date = Date()
                         let months = date.months(from: (date2)!)
@@ -162,7 +162,7 @@ class ViewLoanInfoController: UIViewController, UICircularProgressRingDelegate {
             print("Could not fetch data")
         }
         
-        ring2.fontColor = UIColor.white
+        //ring2.fontColor = UIColor.white
         
         ring2.setProgress(value: 0, animationDuration: 2) { [unowned self] in
             // Increase it more, and customize some properties
