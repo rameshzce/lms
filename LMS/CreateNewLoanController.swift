@@ -38,7 +38,7 @@ class CreateNewLoanController: UIViewController, UITextFieldDelegate {
         
         let icon = UIImage(named:"logo.png")
         let color = UIColor.red
-        let color2 = UIColor.green
+        let color2 = Helper.hexStringToUIColor("#006400")
         
         //_ = alert.showCustom("LMS", subTitle: "Please enter a loan name", color: color, icon: icon!)
         
@@ -282,7 +282,7 @@ class CreateNewLoanController: UIViewController, UITextFieldDelegate {
         
         textField.leftViewMode = UITextFieldViewMode.always
         
-        textField.tintColor = UIColor.white
+        textField.tintColor = Helper.hexStringToUIColor("#006400")
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
