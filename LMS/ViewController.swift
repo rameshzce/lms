@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet var newLoan: UIButton!
+    @IBOutlet var allLoans: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -17,7 +20,11 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = Helper.hexStringToUIColor("#006400")
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         navigationController?.navigationBar.tintColor = UIColor.white
+        
+        Helper.customButton(newLoan)
+        Helper.customButton(allLoans)
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

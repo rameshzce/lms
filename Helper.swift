@@ -53,14 +53,22 @@ class Helper{
         textField.tintColor = UIColor.white
     }
     
-    static func customizeButton(_ button: UIButton!) {
-        //button.setBackgroundImage(nil, forState: .Normal)
-        //button.backgroundColor = UIColor.clearColor()
+    static func customButton(_ button: UIButton!) {
+        button.setBackgroundImage(nil, for: .normal)
+        button.backgroundColor = UIColor.clear
+        button.layer.cornerRadius = 15
+        button.layer.borderWidth = 3
+        button.layer.borderColor = UIColor.white.cgColor
+        button.setTitleColor(UIColor.white, for: UIControlState.normal)
+    }
+    
+    static func customButton2(_ button: UIButton!) {
+        button.setBackgroundImage(nil, for: .normal)
+        button.backgroundColor = UIColor.clear
         button.layer.cornerRadius = 5
         button.layer.borderWidth = 0
-        //button.layer.borderColor = UIColor.whiteColor().CGColor
-        //button.titleLabel!.font =  UIFont(name: "handlee-regular", size: 18)
-        //button.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Normal)
+        button.layer.borderColor = UIColor.white.cgColor
+        button.setTitleColor(UIColor.yellow, for: UIControlState.normal)
     }
     
     static func hexStringToUIColor (_ hex:String) -> UIColor {
