@@ -11,6 +11,8 @@ import UIKit
 class ViewAllLoansCell: UITableViewCell {
     
     @IBOutlet var loanName: UILabel!
+    @IBOutlet var titleBg: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -12,6 +12,8 @@ import CoreData
 class ViewAllLoansController: UITableViewController {
     var allLoans = [String]()
     
+    var titleBg = "#ff218e"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,7 +42,6 @@ class ViewAllLoansController: UITableViewController {
             print("Could not fetch data")
         }
         
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,7 +68,17 @@ class ViewAllLoansController: UITableViewController {
         // Configure the cell...
         cell.loanName.text = allLoans[indexPath.row]
         
+        //cell.titleBg.backgroundColor = Helper.hexStringToUIColor(titleBg)
+        
+        let colorView = UIView()
+        colorView.backgroundColor = Helper.hexStringToUIColor("#006400")
+        cell.selectedBackgroundView = colorView
+        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
