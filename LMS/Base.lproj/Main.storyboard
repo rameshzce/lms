@@ -111,7 +111,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="gPH-RR-8eL">
+                            <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="gPH-RR-8eL">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new loan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6do-ud-xJ9">
@@ -123,7 +123,7 @@
                                     <constraint firstAttribute="width" constant="265" id="xu1-08-AeE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" red="0.13333334029999999" green="0.57254904510000004" blue="0.24705882370000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0307992084" green="0.43942338199999997" blue="0.1593720643" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Loan name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ecy-vU-UF8">
@@ -152,17 +152,17 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSX-4F-Fzr">
-                                <rect key="frame" x="27" y="402" width="265" height="38"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <rect key="frame" x="27" y="402" width="265" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Create">
-                                    <color key="titleColor" red="0.13333334029999999" green="0.57254904510000004" blue="0.24705882370000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.0307992084" green="0.43942338199999997" blue="0.1593720643" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="createLoan:" destination="iMZ-OC-OAv" eventType="touchUpInside" id="DXO-5R-Ugy"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNq-9q-dHb">
-                                <rect key="frame" x="27" y="455" width="265" height="21"/>
+                                <rect key="frame" x="27" y="453" width="265" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="265" id="faJ-H4-NGr"/>
                                     <constraint firstAttribute="height" constant="21" id="zVH-hU-fc1"/>
@@ -259,7 +259,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xt-qE-Msc">
-                                            <rect key="frame" x="19" y="12" width="250" height="21"/>
+                                            <rect key="frame" x="18.5" y="12" width="250" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="250" id="1P9-v2-QXP"/>
                                                 <constraint firstAttribute="height" constant="21" id="CiK-Iq-3jB"/>

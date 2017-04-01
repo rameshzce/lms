@@ -94,19 +94,19 @@ class CreateNewLoanController: UIViewController, UITextFieldDelegate {
                 //showMessage.text = self.lName + " has been saved"
                 
                 //showAlert("Loan \'" + self.lName + "\' has been created")
-                _ = alert.showCustom("LMS", subTitle: "Loan \'" + self.lName + "\' has been created", color: color2, icon: icon!)
+                _ = alert.showCustom("LMS", subTitle: "Loan \'" + self.lName + "\' has been created. A notification will be sent, before 3 days of the due date.", color: color2, icon: icon!)
                 
                 // set notification
                 
                 let center = UNUserNotificationCenter.current()
                 
                 let content = UNMutableNotificationContent()
-                content.title = "EMI for the loan " + self.lName + " is due in 7 days."
+                content.title = "EMI for the loan " + self.lName + " is due in 3 days"
                 content.body = "Please check your bank account to avoid charges"
                 content.sound = UNNotificationSound.default()
                 print(loanMonth.date)
                 
-                let notificationDate = Calendar.current.date(byAdding: .day, value: -7, to: loanMonth.date)
+                let notificationDate = Calendar.current.date(byAdding: .day, value: -3, to: loanMonth.date)
 
                 let triggerTime = Calendar.current.dateComponents([.month, .day, .hour, .minute, .second], from: notificationDate!)
                 
@@ -148,7 +148,7 @@ class CreateNewLoanController: UIViewController, UITextFieldDelegate {
         self.createLoanBtn.clipsToBounds = true
         
         self.createLoanBtn.layer.borderWidth = 2
-        self.createLoanBtn.layer.borderColor = UIColor.white.cgColor
+        self.createLoanBtn.layer.borderColor = Helper.hexStringToUIColor("#006400").cgColor
         
         amountToolbar.barStyle = UIBarStyle.blackTranslucent
         amountToolbar.items=[
