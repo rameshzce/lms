@@ -54,12 +54,13 @@ class Helper{
     }
     
     static func customButton(_ button: UIButton!) {
-        button.setBackgroundImage(nil, for: .normal)
+        //button.setBackgroundImage(nil, for: .normal)
         button.backgroundColor = UIColor.clear
         button.layer.cornerRadius = 15
-        button.layer.borderWidth = 3
+        button.layer.borderWidth = 2
         button.layer.borderColor = UIColor.white.cgColor
         button.setTitleColor(UIColor.white, for: UIControlState.normal)
+        //button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
     }
     
     static func customButton2(_ button: UIButton!) {
