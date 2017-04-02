@@ -17,6 +17,8 @@ class ViewAllLoansController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "All Loans"
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let context = appDelegate.persistentContainer.viewContext

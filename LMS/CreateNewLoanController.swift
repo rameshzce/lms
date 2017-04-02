@@ -94,7 +94,7 @@ class CreateNewLoanController: UIViewController, UITextFieldDelegate {
                 //showMessage.text = self.lName + " has been saved"
                 
                 //showAlert("Loan \'" + self.lName + "\' has been created")
-                _ = alert.showCustom("LMS", subTitle: "Loan \'" + self.lName + "\' has been created. A notification will be sent, before 3 days of the due date.", color: color2, icon: icon!)
+                _ = alert.showCustom("LMS", subTitle: "Loan \'" + self.lName + "\' has been created. A notification will be sent, before 3 days of the due date.", color: color2, icon: icon!, closeButtonTitle:"OK")
                 
                 // set notification
                 
@@ -144,6 +144,8 @@ class CreateNewLoanController: UIViewController, UITextFieldDelegate {
         self.loanEmi.delegate = self
         self.loanStartMonth.delegate = self
         
+        
+        
         self.createLoanBtn.layer.cornerRadius = 15
         self.createLoanBtn.clipsToBounds = true
         
@@ -188,6 +190,21 @@ class CreateNewLoanController: UIViewController, UITextFieldDelegate {
         self.customizetextField(loanTenure)
         self.customizetextField(loanEmi)
         self.customizetextField(loanStartMonth)
+        
+        /*loanName.attributedPlaceholder = NSAttributedString(string: loanName.placeholder!, attributes:[NSForegroundColorAttributeName: Helper.hexStringToUIColor("#006400")])
+        self.view.addSubview(loanName)
+        
+        loanAmount.attributedPlaceholder = NSAttributedString(string: loanAmount.placeholder!, attributes:[NSForegroundColorAttributeName: Helper.hexStringToUIColor("#006400")])
+        self.view.addSubview(loanAmount)
+        
+        loanTenure.attributedPlaceholder = NSAttributedString(string: loanTenure.placeholder!, attributes:[NSForegroundColorAttributeName: Helper.hexStringToUIColor("#006400")])
+        self.view.addSubview(loanTenure)
+        
+        loanEmi.attributedPlaceholder = NSAttributedString(string: loanEmi.placeholder!, attributes:[NSForegroundColorAttributeName: Helper.hexStringToUIColor("#006400")])
+        self.view.addSubview(loanEmi)
+        
+        loanStartMonth.attributedPlaceholder = NSAttributedString(string: loanStartMonth.placeholder!, attributes:[NSForegroundColorAttributeName: Helper.hexStringToUIColor("#006400")])
+        self.view.addSubview(loanStartMonth)*/
         
         createDatePickerMonth()
         
@@ -283,6 +300,9 @@ class CreateNewLoanController: UIViewController, UITextFieldDelegate {
         textField.leftViewMode = UITextFieldViewMode.always
         
         textField.tintColor = Helper.hexStringToUIColor("#006400")
+        
+        textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder!, attributes:[NSForegroundColorAttributeName: Helper.hexStringToUIColor("#006400")])
+        self.view.addSubview(textField)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -304,7 +324,7 @@ class CreateNewLoanController: UIViewController, UITextFieldDelegate {
         } else if (textField == loanTenure){
             loanTenure.placeholder = "Tenure in months"
         }
-        
+        textField.setValue(Helper.hexStringToUIColor("#006400"), forKeyPath: "_placeholderLabel.textColor")
     }
     
     /*

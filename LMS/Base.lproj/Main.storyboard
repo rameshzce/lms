@@ -255,11 +255,11 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vRE-TC-owq" id="7dj-MP-uQH">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xt-qE-Msc">
-                                            <rect key="frame" x="19" y="39" width="250" height="21"/>
+                                            <rect key="frame" x="18.5" y="39" width="250" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="250" id="1P9-v2-QXP"/>
                                                 <constraint firstAttribute="height" constant="21" id="CiK-Iq-3jB"/>
