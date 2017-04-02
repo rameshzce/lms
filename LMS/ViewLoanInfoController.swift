@@ -16,6 +16,7 @@ class ViewLoanInfoController: UIViewController, UICircularProgressRingDelegate {
     
     var loanName: String?
     
+    @IBOutlet var boxView: UIView!
     @IBOutlet var loanNameLabel: UILabel!
     @IBOutlet var loanAmount: UILabel!
     @IBOutlet var loanTenure: UILabel!
