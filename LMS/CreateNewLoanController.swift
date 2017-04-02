@@ -46,19 +46,19 @@ class CreateNewLoanController: UIViewController, UITextFieldDelegate {
         
         if (loanName.text?.isEmpty)! {
             //showAlert("Please enter a loan name")
-            _ = alert.showCustom("LMS", subTitle: "Please enter a loan name", color: color, icon: icon!)
+            _ = alert.showCustom("LMS", subTitle: "Please enter a loan name", color: color, icon: icon!, closeButtonTitle:"OK")
         } else if (loanAmount.text?.isEmpty)! {
             //showAlert("Please enter a loan amount")
-            _ = alert.showCustom("LMS", subTitle: "Please enter a loan amount", color: color, icon: icon!)
+            _ = alert.showCustom("LMS", subTitle: "Please enter a loan amount", color: color, icon: icon!, closeButtonTitle:"OK")
         } else if (loanTenure.text?.isEmpty)! {
             //showAlert("Please enter a loan tenure")
-            _ = alert.showCustom("LMS", subTitle: "Please enter a loan tenure", color: color, icon: icon!)
+            _ = alert.showCustom("LMS", subTitle: "Please enter a loan tenure", color: color, icon: icon!, closeButtonTitle:"OK")
         } else if (loanEmi.text?.isEmpty)! {
             //showAlert("Please enter loan emi")
-            _ = alert.showCustom("LMS", subTitle: "Please enter loan emi", color: color, icon: icon!)
+            _ = alert.showCustom("LMS", subTitle: "Please enter loan emi", color: color, icon: icon!, closeButtonTitle:"OK")
         } else if (loanStartMonth.text?.isEmpty)! {
             //showAlert("Please select loan start date")
-            _ = alert.showCustom("LMS", subTitle: "Please select loan start date", color: color, icon: icon!)
+            _ = alert.showCustom("LMS", subTitle: "Please select loan start date", color: color, icon: icon!, closeButtonTitle:"OK")
         } else {
             self.lName = loanName.text!
             self.lAmount = Int(loanAmount.text!)!

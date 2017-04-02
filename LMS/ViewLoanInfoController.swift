@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import UserNotifications
 import UICircularProgressRing
+import SCLAlertView
 
 class ViewLoanInfoController: UIViewController, UICircularProgressRingDelegate {
     
@@ -29,7 +30,15 @@ class ViewLoanInfoController: UIViewController, UICircularProgressRingDelegate {
 
     
     @IBAction func deleteLoan(_ sender: Any) {
-        let deleteAlert = UIAlertController(title: "LMS", message: "Are you sure to delete?", preferredStyle: .alert)
+        let alert = SCLAlertView()
+        
+        let icon = UIImage(named:"logo.png")
+        let color = UIColor.red
+        let color2 = Helper.hexStringToUIColor("#006400")
+        
+        _ = alert.addButton("Yes", backgroundColor: color2, target:self, selector:#selector(self.deleteYes))
+        
+        /*let deleteAlert = UIAlertController(title: "LMS", message: "Are you sure to delete?", preferredStyle: .alert)
         
         deleteAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
             deleteAlert.dismiss(animated: true, completion: nil)
@@ -75,12 +84,47 @@ class ViewLoanInfoController: UIViewController, UICircularProgressRingDelegate {
         deleteAlert.addAction(UIAlertAction(title: "No", style: .default, handler: { (action) in
             deleteAlert.dismiss(animated: true, completion: nil)
             
-        }))
+        }))*/
         
-        self.present(deleteAlert, animated: true, completion: nil)
+        //self.present(deleteAlert, animated: true, completion: nil)
+        _ = alert.showCustom("LMS", subTitle: "Are you sure to delete?", color: color, icon: icon!, closeButtonTitle:"No")
     }
     
-   
+    func deleteYes() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Loans")
+        
+        request.predicate = NSPredicate(format: "name = %@", self.loanName!)
+        
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let results = try context.fetch(request)
+            
+            if results.count > 0 {
+                for result in results as! [NSManagedObject] {
+                    
+                    context.delete(result)
+                    
+                    do {
+                        try context.save()
+                        self.performSegue(withIdentifier: "deleteLoan", sender: nil)
+                    } catch {
+                        print("Error")
+                    }
+                    
+                }
+            } else {
+                print("No data")
+            }
+        } catch {
+            print("Delete error")
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
